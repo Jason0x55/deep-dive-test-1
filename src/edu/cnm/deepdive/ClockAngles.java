@@ -93,6 +93,11 @@ package edu.cnm.deepdive;
  */
 public class ClockAngles {
 
+  private static final int DEGREES_IN_CIRCLE = 360;
+  private static final int DEGREES_BETWEEN_HOURS = 30;
+  private static final int MINUTES_IN_HOUR = 60;
+  private static final int HOURS_ON_CLOCK = 12;
+
   /**
    * Computes and returns the angle made by the hour hand, measured clockwise
    * from straight up (12 o'clock on the clock face).
@@ -103,7 +108,12 @@ public class ClockAngles {
    * @return        angle (in degrees) to which hour hand is oriented.
    */
   public static double hourHandDegrees(int hours, double minutes) {
-    // TODO Implement method.
+    hours = hours % HOURS_ON_CLOCK;
+    double angleH = ((hours % HOURS_ON_CLOCK) == 0) ? 0 :
+        DEGREES_IN_CIRCLE / (HOURS_ON_CLOCK / (double) hours);
+    double angleM = (minutes == 0) ? 0 :
+        DEGREES_BETWEEN_HOURS / (MINUTES_IN_HOUR / minutes);
+    return angleH + angleM;
   }
 
   /**
@@ -114,7 +124,11 @@ public class ClockAngles {
    * @return        angle (in degrees) to which minute hand is oriented.
    */
   public static double minuteHandDegrees(double minutes) {
-    // TODO Implement method.
+    if (minutes == 0) {
+      return 0;
+    }
+    double angle = DEGREES_IN_CIRCLE / (MINUTES_IN_HOUR / minutes);
+    return angle;
   }
 
   /**
@@ -128,6 +142,7 @@ public class ClockAngles {
    */
   public static double hourHandRadians(int hours, double minutes) {
     // TODO Implement method for EXTRA CREDIT!
+    return 0.0;
   }
 
   /**
@@ -139,6 +154,7 @@ public class ClockAngles {
    */
   public static double minuteHandRadians(double minutes) {
     // TODO Implement method for EXTRA CREDIT!
+    return 0.0;
   }
 
 }

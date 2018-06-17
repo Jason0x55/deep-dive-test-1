@@ -57,7 +57,20 @@ public class Leaderboard {
    * @return            resulting ranks.
    */
   public static int[] getCompetitionRanking(int[] leaderboard, int[] scores) {
-    // TODO Implement method.
+    int ranking[] = new int[scores.length];
+    int rank = 0;
+    for (int i = 0; i < scores.length; i++) {
+      for (int j = 0; j < leaderboard.length; j++) {
+        if (scores[i] >= leaderboard[j]) {
+            rank = j + 1;
+            break;
+        } else {
+            rank = j + 2;
+        }
+      }
+      ranking[i] = rank;
+    }
+    return ranking;
   }
 
   /**
@@ -76,6 +89,7 @@ public class Leaderboard {
    */
   public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
     // TODO Implement method for EXTRA CREDIT!
+    return new int[0];
   }
 
 }

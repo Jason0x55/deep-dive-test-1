@@ -113,7 +113,20 @@ public class Staircase {
    * @return        array of length <code>height</code>.
    */
   public static String[] buildLinearStaircase(int height) {
-    // TODO Implement method.
+    String[] steps = new String[height];
+    String step = "";
+    for (int i = 0; i < height; i++) {
+      for (int j = height - 1; j >= 0; j--) {
+        if (j <= i){
+          step += "*";
+        } else {
+          step += " ";
+        }
+      }
+      steps[i] = step;
+      step = "";
+    }
+    return steps;
   }
 
   /**
@@ -132,6 +145,7 @@ public class Staircase {
    */
   public static String[] buildFibonacciStaircase(int height) {
     // TODO Implement method for EXTRA CREDIT!
+    return new String[0];
   }
 
 }
