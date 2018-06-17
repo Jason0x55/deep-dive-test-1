@@ -144,8 +144,26 @@ public class Staircase {
    * @return        array of length <code>height</code>.
    */
   public static String[] buildFibonacciStaircase(int height) {
-    // TODO Implement method for EXTRA CREDIT!
-    return new String[0];
+    String[] steps = new String[height];
+    String step = "";
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < fibonacci(i); j++) {
+        step += "*";
+      }
+      while (step.length() < height) {
+        step = " " + step;
+      }
+      steps[i] = step;
+      step = "";
+    }
+    return steps;
   }
 
+  private static int fibonacci(int steps) {
+    if (steps <= 1) {
+      return 1;
+    }
+    return fibonacci(steps - 1) + fibonacci(steps - 2);
+
+  }
 }

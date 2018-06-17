@@ -1,5 +1,8 @@
 package edu.cnm.deepdive;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The static methods of this class compute rankings of an input array of scores
  * against a leaderboard of scores.
@@ -88,8 +91,23 @@ public class Leaderboard {
    * @return            resulting ranks.
    */
   public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
-    // TODO Implement method for EXTRA CREDIT!
-    return new int[0];
+    return getCompetitionRanking(removeDuplicates(leaderboard), scores);
+  }
+
+  // Removes duplicate scores from leaderboard.
+  private static int[] removeDuplicates(int[] leaderboard) {
+    List<Integer> list = new ArrayList<Integer>();
+    for (int score : leaderboard) {
+      if (!list.contains(score)) {
+        list.add(score);
+      }
+    }
+
+    int[] noDuplicates = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+      noDuplicates[i] = list.get(i);
+    }
+    return noDuplicates;
   }
 
 }
